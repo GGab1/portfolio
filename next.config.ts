@@ -50,6 +50,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Empêcher l'inclusion de `canvas` côté serveur
+      config.resolve.alias.canvas = false;
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
