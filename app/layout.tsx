@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
+import '@react-pdf-viewer/core/lib/styles/index.css';
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],

@@ -1,24 +1,25 @@
 'use client';
 
-import { Worker, Viewer } from '@react-pdf-viewer/core';
-import '@react-pdf-viewer/core/lib/styles/index.css';
+import dynamic from 'next/dynamic';
+
+const PDFViewer = dynamic(
+    () =>
+        import('@react-pdf-viewer/core').then(({ Worker, Viewer }) => {
+            return function Wrapper() {
+                return (
+                    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
+                        <Viewer fileUrl="/CV_Gabin-Guerin.pdf" />
+                    </Worker>
+                );
+            };
+        }),
+    { ssr: false }
+);
 
 export default function CVViewer() {
     return (
-        <div className="w-full h-full overflow-hidden rounded-3xl bg-black">
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
-                <div
-                    className={`
-                        w-full h-full
-                        [&_.rpv-core__viewer]:!bg-black
-                        [&_.rpv-core__inner-pages]:!w-full
-                        [&_.rpv-core__page-layer]:!w-full
-                        [&_.rpv-core__canvas]:!bg-black
-                    `}
-                >
-                    <Viewer fileUrl="/CV_Gabin-Guerin.pdf" />
-                </div>
-            </Worker>
+        <div className="w-full h-full overflow-hidden rounded-3xl bg-white">
+            <PDFViewer />
         </div>
     );
 }

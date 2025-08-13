@@ -13,8 +13,8 @@ export default function CVSection() {
     }, []);
 
     return (
-        <div className="w-full h-full overflow-hidden rounded-3xl bg-black">
-            {ViewerComp || <p className="text-center p-4">Chargement du CV...</p>}
+        <div className="w-full h-full overflow-hidden rounded-3xl bg-white">
+            {ViewerComp || <p className="text-center p-4 text-black">Chargement du CV...</p>}
         </div>
     );
 }
