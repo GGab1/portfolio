@@ -1,7 +1,6 @@
 import CompetenceWrapper from '@/components/competences/CompetenceWrapper';
 import CVSection from './CVSection';
 
-
 export default async function Competences() {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const competencesRes = await fetch(`${baseUrl}/api/competences`, { cache: 'no-store' });
