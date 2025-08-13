@@ -1,5 +1,5 @@
 import CompetenceWrapper from '@/components/competences/CompetenceWrapper';
-import CVViewer from '@/components/CVViewer';
+import CVSection from './CVSection';
 
 
 export default async function Competences() {
@@ -37,7 +37,7 @@ export default async function Competences() {
                     </div>
 
                     <div className="flex-1 h-full w-full">
-                        <CVViewer />
+                        <CVSection />
                     </div>
                 </div>
 
