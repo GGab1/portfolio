@@ -5,7 +5,7 @@ type Competence = {
   nom: string
   logo: string
   categorie: string
-  type?: 'dev' | 'crea' | 'com'
+  type?: string
 }
 
 export default function Competence({ competences }: { competences: Competence[] }) {

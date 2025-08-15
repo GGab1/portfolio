@@ -11,7 +11,7 @@ type Projet = {
   image?: string
   created_at?: string
   team?: boolean
-  type?: 'dev' | 'crea' | 'com'
+  type?: string
 }
 
 export default function Projets({ projets }: { projets: Projet[] }) {

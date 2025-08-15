@@ -1,28 +1,15 @@
 import Image from "next/image";
-import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight as faChevronSolid } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight as faChevronSolid } from '@fortawesome/free-solid-svg-icons';
 import CalendrierWrapper from "@/components/calendrier/CalendrierWrapper";
 import ProjetWrapper from "@/components/projet/ProjetWrapper";
+import data from '@/app/data.json';
 
-export default async function About() {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const eventRes = await fetch(`${baseUrl}/api/evenements`, { cache: 'no-store' });
-    const projetsRes = await fetch(`${baseUrl}/api/projets`, { cache: 'no-store' })
-    
-    
-    if (!eventRes.ok) {
-        console.error("Erreur récupération événements :", eventRes.status);
-        throw new Error('Erreur chargement des événements');
-    }
-    if (!projetsRes.ok) {
-        console.error("Erreur récupération projets :", projetsRes.status);
-        throw new Error('Erreur chargement des projets');
-    }
-    
-    const evenements = await eventRes.json();
-    const projets = await projetsRes.json()
-    
+export default function About() {
+    const evenements = data.evenements;
+    const projets = data.projets;
+
     return (
         <div className="flex flex-col gap-6">
             {/* Première ligne */}

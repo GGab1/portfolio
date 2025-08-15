@@ -1,16 +1,9 @@
 import CompetenceWrapper from '@/components/competences/CompetenceWrapper';
 import CVSection from './CVSection';
+import data from '@/app/data.json';
 
-export default async function Competences() {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const competencesRes = await fetch(`${baseUrl}/api/competences`, { cache: 'no-store' });
-
-    if (!competencesRes.ok) {
-        console.error("Erreur récupération compétences :", competencesRes.status);
-        throw new Error('Erreur chargement des compétences');
-    }
-
-    const competences = await competencesRes.json()
+export default function Competences() {
+    const competences = data.competences;
 
     return (
         <div className="flex h-screen gap-6 p-6 text-white">
@@ -52,5 +45,5 @@ export default async function Competences() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
